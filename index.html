@@ -2,53 +2,286 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Yellow Team Parade</title>
 <meta name="theme-color" content="#F5C400">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFF9DB;--ink:#2B2A1F;--card:#fff;--line:#E6DC9A;--y:#F5C400;--y2:#B38F00;--muted:#6E6A4E;--bad:#B3322B;--ok:#2F7D4F;}
+:root{
+  --bg:#FFF9DB;
+  --ink:#2B2A1F;
+  --card:#fff;
+  --line:#E6DC9A;
+  --y:#F5C400;
+  --y2:#B38F00;
+  --muted:#6E6A4E;
+  --bad:#B3322B;
+  --ok:#2F7D4F;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans Thai",system-ui,sans-serif}
-header{background:var(--y);padding:12px 16px;display:flex;flex-wrap:wrap;position:sticky;top:0;z-index:100}
-header h1{font-size:1.1rem;font-weight:800;flex:1}
-nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-nav button{border:2px solid #2B2A1F;background:transparent;border-radius:999px;padding:4px 12px;font:inherit;font-weight:600;cursor:pointer}
-nav button.on{background:#2B2A1F;color:var(--y)}
-main{max-width:760px;margin:0 auto;padding:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
-h2{font-size:1.2rem;margin-bottom:10px}
-label.f{display:block;font-weight:600;margin:10px 0 4px}
-input,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
-.btn{background:var(--y);border:2px solid #2B2A1F;border-radius:10px;padding:9px 18px;font:inherit;font-weight:800;cursor:pointer;margin-top:12px}
-.btn.sec{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.sm{padding:5px 12px;margin:4px 4px 0 0;font-size:.85rem}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.6 "Noto Sans Thai",system-ui,sans-serif
+}
+header{
+  background:var(--y);
+  padding:12px 16px;
+  display:flex;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:100
+}
+header h1{
+  font-size:1.1rem;
+  font-weight:800;
+  flex:1
+}
+nav{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:4px
+}
+nav button{
+  border:2px solid var(--ink);
+  background:transparent;
+  border-radius:999px;
+  padding:4px 12px;
+  font:inherit;
+  font-weight:600;
+  cursor:pointer
+}
+nav button.on{
+  background:var(--ink);
+  color:var(--y)
+}
+main{
+  max-width:760px;
+  margin:0 auto;
+  padding:16px
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px
+}
+h2{
+  font-size:1.2rem;
+  margin-bottom:10px
+}
+label.f{
+  display:block;
+  font-weight:600;
+  margin:10px 0 4px
+}
+input,select{
+  width:100%;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--bg);
+  color:var(--ink);
+  font:inherit
+}
+input[type=file]{
+  padding:7px
+}
+.btn{
+  background:var(--y);
+  color:var(--ink);
+  border:2px solid var(--ink);
+  border-radius:10px;
+  padding:9px 18px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+  margin-top:12px
+}
+.btn.sec{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--line)
+}
+.btn.sm{
+  padding:5px 12px;
+  margin:4px 4px 0 0;
+  font-size:.85rem
+}
 .w{width:100%}
-.err{color:var(--bad);min-height:1.4em;margin-top:8px}
-.hint{background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:10px;margin-top:10px;font-size:.9rem;color:var(--muted)}
-.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0}
-.avatar{width:48px;height:48px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-weight:800;flex-shrink:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.chip{padding:5px 12px;border:1.5px solid var(--line);border-radius:999px;cursor:pointer}
-.chip[aria-pressed=true]{background:var(--y);border-color:var(--y2);font-weight:700}
-.member{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.err{
+  color:var(--bad);
+  min-height:1.4em;
+  margin-top:8px
+}
+.hint{
+  background:var(--bg);
+  border:1px dashed var(--line);
+  border-radius:8px;
+  padding:10px;
+  margin-top:10px;
+  font-size:.9rem;
+  color:var(--muted)
+}
+.row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:8px 0
+}
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--line);
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  flex-shrink:0;
+  object-fit:cover
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:8px 0
+}
+.chip{
+  padding:5px 12px;
+  border:1.5px solid var(--line);
+  border-radius:999px;
+  cursor:pointer;
+  background:white;
+  font:inherit
+}
+.chip[aria-pressed=true]{
+  background:var(--y);
+  border-color:var(--y2);
+  font-weight:700
+}
+.member{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px 0;
+  border-top:1px solid var(--line);
+  flex-wrap:wrap
+}
 .member:first-child{border-top:none}
-.info{flex:1;min-width:180px}
-.info small{color:var(--muted);display:block}
-.badge{border-radius:5px;padding:2px 8px;font-size:.75rem;font-weight:700;color:#fff;display:inline-block;margin:2px 2px 0 0}
-.role{background:#2B2A1F;color:var(--y);border-radius:5px;padding:2px 6px;font-size:.7rem;margin-left:6px}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#2B2A1F;color:var(--y);padding:10px 20px;border-radius:999px;font-weight:600;opacity:0;transition:opacity .3s;z-index:1000}
+.info{
+  flex:1;
+  min-width:180px
+}
+.info small{
+  color:var(--muted);
+  display:block
+}
+.badge{
+  border-radius:5px;
+  padding:2px 8px;
+  font-size:.75rem;
+  font-weight:700;
+  color:#fff;
+  display:inline-block;
+  margin:2px
+}
+.role{
+  background:var(--ink);
+  color:var(--y);
+  border-radius:5px;
+  padding:2px 6px;
+  font-size:.7rem;
+  margin-left:6px
+}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%);
+  background:var(--ink);
+  color:var(--y);
+  padding:10px 20px;
+  border-radius:999px;
+  font-weight:600;
+  opacity:0;
+  transition:opacity .3s;
+  z-index:1000;
+  max-width:90%;
+  text-align:center
+}
 .toast.show{opacity:1}
-.empty{color:var(--muted);text-align:center;padding:20px}
-.cnt{background:var(--bad);color:#fff;border-radius:999px;font-size:.7rem;padding:0 6px;margin-left:4px}
-.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;margin-top:10px}
-.grid7 .wd{color:var(--muted);font-size:.8rem;padding:4px 0}
-.grid7 button.day{aspect-ratio:1;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);cursor:pointer;font:inherit}
-.grid7 button.day[aria-pressed=true]{background:var(--y);border-color:var(--y2);font-weight:800}
-.grid7 button.day.past{opacity:.4}
-.calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.calhead button{border:2px solid var(--ink);background:transparent;border-radius:8px;padding:2px 10px;cursor:pointer;font:inherit}
-.dates-tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin:2px;font-size:.85rem}
+.empty{
+  color:var(--muted);
+  text-align:center;
+  padding:20px
+}
+.grid7{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:4px;
+  text-align:center;
+  margin-top:10px
+}
+.grid7 .wd{
+  color:var(--muted);
+  font-size:.8rem;
+  padding:4px 0
+}
+.grid7 button.day{
+  aspect-ratio:1;
+  border:1.5px solid var(--line);
+  border-radius:8px;
+  background:var(--bg);
+  cursor:pointer;
+  font:inherit
+}
+.grid7 button.day[aria-pressed=true]{
+  background:var(--y);
+  border-color:var(--y2);
+  font-weight:800
+}
+.grid7 button.day.past{
+  opacity:.4
+}
+.calhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px
+}
+.calhead button{
+  border:2px solid var(--ink);
+  background:transparent;
+  border-radius:8px;
+  padding:2px 10px;
+  cursor:pointer;
+  font:inherit
+}
+.dates-tag{
+  display:inline-block;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:2px 8px;
+  margin:2px;
+  font-size:.85rem
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px;
+  margin:6px 0
+}
+hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:14px 0
+}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -57,318 +290,1235 @@ input,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-rad
   <h1>🟡 Yellow Team</h1>
   <nav id="nav"></nav>
 </header>
-<main id="app"><div class="empty">กำลังโหลด...</div></main>
+<main id="app">
+  <div class="empty">กำลังโหลด...</div>
+</main>
 <div class="toast" id="toast"></div>
-
 <script>
-const SKILLS = ["วาดรูป","ใช้กำลัง","งานเหล็ก","ตัด/ขัดโฟม","งานผ้า","ทาสี","งานไฟฟ้า","ตกแต่ง"];
-const GROUPS = ["ทีมโครงเหล็ก","ทีมโฟม","ทีมผ้า","ทีมทาสี","ทีมไฟฟ้า","ทีมตกแต่ง","ทีมยกของหนัก"];
-const MTH = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
-const WD = ["จ","อ","พ","พฤ","ศ","ส","อา"];
-const ROLE_TH = {admin:"แอดมิน", leader:"หัวหน้าทีม", member:"สมาชิก"};
-const TOKEN_KEY = "ytp_token";
-
-// ========== ฐานข้อมูล ==========
-const DB = {
-  get(){ try{ return JSON.parse(localStorage.getItem("ytp_db")) || this._init() }catch{ return this._init() } },
-  _init(){
-    return {
-      users: [
-        { id:"admin", sid:"000001", name:"ผู้ดูแลระบบ", pin:"123456", room:"ระบบ", role:"admin", group:"", skills:[], workdates:[], attendance:[], leaves:[], photo:"" },
-        { id:"leader1", sid:"000002", name:"หัวหน้าทีมโฟม", pin:"123456", room:"ทดสอบ", role:"leader", group:"ทีมโฟม", skills:[], workdates:[], attendance:[], leaves:[], photo:"" }
-      ],
-      settings: { photoTask:"ถ่ายรูปคู่ป้ายทีม", startTime:"15:30", finePerMin:5 },
-      rev: 1
-    }
-  },
-  save(data){ localStorage.setItem("ytp_db", JSON.stringify(data)) },
-  findUser(sid){ return this.get().users.find(u => u.sid === sid) },
-  findById(id){ return this.get().users.find(u => u.id === id) },
-  nextId(){ return Date.now().toString(36) + Math.random().toString(36).slice(2) }
+const GAS_URL =
+"https://script.google.com/macros/s/AKfycbw76IplnzRQvXsTmCf-7DUys3MU8S9ewtaD5aZ-yDiGtkmRkD-xACfGA9C52XXzsLIa/exec";
+const SKILLS=[
+  "วาดรูป",
+  "ใช้กำลัง",
+  "งานเหล็ก",
+  "ตัด/ขัดโฟม",
+  "งานผ้า",
+  "ทาสี",
+  "งานไฟฟ้า",
+  "ตกแต่ง"
+];
+const GROUPS=[
+  "ทีมโครงเหล็ก",
+  "ทีมโฟม",
+  "ทีมผ้า",
+  "ทีมทาสี",
+  "ทีมไฟฟ้า",
+  "ทีมตกแต่ง",
+  "ทีมยกของหนัก"
+];
+const MTH=[
+  "ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.",
+  "ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."
+];
+const WD=["จ","อ","พ","พฤ","ศ","ส","อา"];
+const ROLE_TH={
+  admin:"แอดมิน",
+  leader:"หัวหน้าทีม",
+  member:"สมาชิก"
 };
-
-let db = DB.get();
-let token = localStorage.getItem(TOKEN_KEY);
-let me = null;
-let view = token ? "loading" : "login";
-let calY = new Date().getFullYear(), calM = new Date().getMonth();
-
-// ========== เครื่องมือ ==========
-function pad(n){ return n<10 ? "0"+n : ""+n }
-function ymd(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()) }
-function todayStr(){ return ymd(new Date()) }
-function $(id){ return document.getElementById(id) }
-function esc(s){ const d=document.createElement("div");d.textContent=s??"";return d.innerHTML }
-function toast(msg){ const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove("show"),3000) }
-function av(u){ return u.photo
-  ? <img class="avatar" src="${esc(u.photo)}" alt="">
-  : <div class="avatar">${esc((u.name||"?")[0])}</div> }
+const TOKEN_KEY="ytp_token";
+let token=localStorage.getItem(TOKEN_KEY);
+let me=null;
+let state={
+  users:[],
+  settings:{
+    photoTask:"ถ่ายรูปคู่ป้ายทีม",
+    startTime:"15:30",
+    finePerMin:5
+  }
+};
+let view=token?"loading":"login";
+let calY=new Date().getFullYear();
+let calM=new Date().getMonth();
+// ======================================================
+// เครื่องมือ
+// ======================================================
+function pad(n){
+  return n<10 ? "0"+n : ""+n;
+}
+function ymd(d){
+  return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+}
+function todayStr(){
+  return ymd(new Date());
+}
+function $(id){
+  return document.getElementById(id);
+}
+function esc(s){
+  const d=document.createElement("div");
+  d.textContent=s==null?"":String(s);
+  return d.innerHTML;
+}
+function toast(msg){
+  const t=$("toast");
+  t.textContent=msg;
+  t.classList.add("show");
+  clearTimeout(window._toastTimer);
+  window._toastTimer=setTimeout(()=>{
+    t.classList.remove("show");
+  },3000);
+}
+function av(u){
+  if(u && u.photo){
+    return `
+      <img
+        class="avatar"
+        src="${esc(u.photo)}"
+        alt=""
+      >
+    `;
+  }
+  return `
+    <div class="avatar">
+      ${esc((u&&u.name?u.name:"?")[0])}
+    </div>
+  `;
+}
 function chips(selected=[]){
-  return <div class="chips">${SKILLS.map(s => `<button type="button" class="chip" data-skill="${s}" aria-pressed="${selected.includes(s)}">${s}</button>).join("")}</div>`
+  return `
+    <div class="chips">
+      ${SKILLS.map(s=>`
+        <button
+          type="button"
+          class="chip"
+          data-skill="${esc(s)}"
+          aria-pressed="${selected.includes(s)}"
+        >
+          ${esc(s)}
+        </button>
+      `).join("")}
+    </div>
+  `;
 }
 function statusBadge(status){
-  if(status==="approved") return <span class="badge" style="background:var(--ok)">อนุมัติ</span>;
-  if(status==="rejected") return <span class="badge" style="background:var(--bad)">ไม่อนุมัติ</span>;
+  if(status==="approved"){
+    return <span class="badge" style="background:var(--ok)">อนุมัติ</span>;
+  }
+  if(status==="rejected"){
+    return <span class="badge" style="background:var(--bad)">ไม่อนุมัติ</span>;
+  }
   return <span class="badge" style="background:var(--y2)">รออนุมัติ</span>;
 }
-function refreshUser(){ me = DB.findById(me?.id); }
-
-// ========== ระบบเข้าออก ==========
-function signIn(sid, pin){
-  const user = DB.findUser(sid);
-  if(!user) return {ok:false, err:"ไม่พบรหัสนักเรียน"};
-  if(user.pin !== pin) return {ok:false, err:"PIN ไม่ถูกต้อง"};
-  token = "t_"+user.id;
-  localStorage.setItem(TOKEN_KEY, token);
-  me = user;
-  view = "avail";
-  return {ok:true};
-}
-
-function register(data){
-  if(DB.findUser(data.sid)) return {ok:false, err:"รหัสนี้มีในระบบแล้ว"};
-  if(!/^\d{6}$/.test(data.pin)) return {ok:false, err:"PIN ต้องเป็น 6 หลัก"};
-  const newUser = {
-    id: DB.nextId(), sid: data.sid, name: data.name, pin: data.pin, room: data.room,
-    role: "member", group: data.group||"", skills: data.skills||[], workdates: [], attendance:[], leaves:[], photo:data.photo||""
+// ======================================================
+// API
+// ======================================================
+async function api(action,data={}){
+  const payload={
+    ...data,
+    action:action,
+    token:token||""
   };
-  db.users.push(newUser); DB.save(db);
-  return {ok:true};
-}
-
-function signOut(){ token=null;me=null;localStorage.removeItem(TOKEN_KEY);view="login"; }
-
-async function readImage(file){
-  if(!file) return "";
-  return new Promise(res=>{
-    const fr=new FileReader();fr.onload=e=>{
-      const img=new Image();img.onload=()=>{
-        const c=document.createElement("canvas");
-        const s=Math.min(1,1024/Math.max(img.width,img.height));
-        c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);
-        c.getContext("2d").drawImage(img,0,0,c.width,c.height);
-        res(c.toDataURL("image/jpeg",0.8));
-      };img.src=e.target.result;
-    };fr.readAsDataURL(file);
+  const response=await fetch(GAS_URL,{
+    method:"POST",
+    body:JSON.stringify(payload)
   });
+  const result=await response.json();
+  if(!result.success){
+    throw new Error(result.error||"เกิดข้อผิดพลาด");
+  }
+  return result;
 }
-
-// ========== แสดงรายชื่อพร้อมวันที่เลือก ==========
-function listWithDates(){
-  let list = db.users;
-  // กรอง: หัวหน้าเห็นแค่คนในทีม, แอดมินเห็นทั้งหมด
-  if(me.role==="leader") list = list.filter(u => u.group === me.group || u.id === me.id);
-  
-  return list.map(u => {
-    const days = u.workdates.sort();
-    const shortDates = days.map(d => d.slice(5).replace("-","/")).join(", ");
-    const ok = days.length >= 5;
-    return `
-<div class="member">
-  ${av(u)}
-  <div class="info">
-    <b>${esc(u.name)}</b>
-    ${u.role!=="member"?`<span class="role">${ROLE_TH[u.role]}</span>`:""}
-    <small>${esc(u.sid)} · ${esc(u.group||"ยังไม่มีกลุ่ม")}</small>
-    <small>เลือกแล้ว <b style="color:${ok?'var(--ok)':'var(--bad)'}">${days.length}</b> วัน ${ok?'✅ ครบ':'⚠️ ยังไม่ครบ'}</small>
-    ${days.length?`<small class="dates-tag">${shortDates}</small>`:'<small class="dates-tag" style="color:var(--muted)">ยังไม่ได้เลือกวัน</small>'}
-  </div>
-  ${me.role==="admin"?`<select data-uid="${u.id}">
-    <option value="">ไม่มีกลุ่ม</option>
-    ${GROUPS.map(g=>`<option ${u.group===g?"selected":""}>${g}</option>`).join("")}
-  </select>`:""}
-</div>`;
-  }).join("");
-}
-
-// ========== วาดหน้า ==========
-function drawNav(){
-  if(!me){ $("nav").innerHTML=""; return }
-  function btn(v,l,b=""){return`<button data-go="${v}" class="${view===v?"on":""}">${l}${b}</button>`;}
-  let h=btn("profile","โปรไฟล์")+btn("avail","วันทำงาน");
-  if(me.role!=="member") h+=btn("leaves","อนุมัติลา");
-  h+=btn("checkin","เช็คชื่อ");
-  if(me.role==="admin"||me.role==="leader") h+=btn("viewdates","ดูวันที่ทุกคน");
-  if(me.role==="admin") h+=btn("members","สมาชิก")+btn("settings","ตั้งค่า");
-  h+=`<button data-go="out" class="btn sec sm">ออก</button>`;
-  $("nav").innerHTML=h;
-}
-
-function draw(){
-  drawNav();let html="";
-  
-  if(view==="loading"){
-    me=DB.findUser(token?.replace("t_",""));view=me?"avail":"login";draw();return;
-  }
-  
-  if(view==="login"){
-    html=`
-<div class="card"><h2>เข้าสู่ระบบ</h2>
-<label class="f">รหัสนักเรียน</label><input type="text" id="sid">
-<label class="f">PIN 6 หลัก</label><input type="password" id="pin" maxlength="6">
-<div class="err" id="err"></div>
-<button class="btn w" data-act="login">เข้าสู่ระบบ</button>
-<button class="btn sec w" data-go="register">ลงทะเบียนใหม่</button>
-<div class="hint">💡 แอดมิน: รหัส 000001 | PIN 123456<br>หัวหน้าทีมโฟม: 000002 | 123456</div>
-</div>`;
-  }
-  
-  else if(view==="register"){
-    html=`
-<div class="card"><h2>ลงทะเบียน</h2>
-<label class="f">รหัสนักเรียน</label><input type="text" id="rs">
-<label class="f">ชื่อ-นามสกุล</label><input type="text" id="rn">
-<label class="f">ห้องเรียน</label><input type="text" id="rr">
-<label class="f">PIN 6 หลัก</label><input type="password" id="rp" maxlength="6">
-<label class="f">กลุ่ม</label>
-<select id="rg"><option value="">ยังไม่สังกัด</option>${GROUPS.map(g=>`<option>${g}</option>`).join("")}</select>
-<label class="f">ทักษะ</label>${chips()}
-<div class="err" id="err"></div>
-<button class="btn w" data-act="reg">ลงทะเบียน</button>
-<button class="btn sec w" data-go="login">กลับ</button>
-</div>`;
-  }
-  
-  else if(view==="profile"){
-    refreshUser();
-    html=`
-<div class="card"><h2>โปรไฟล์</h2>
-<div class="row">${av(me)}<div><b>${esc(me.name)}</b><small>${esc(me.sid)} · ${ROLE_TH[me.role]}${me.group?" · "+esc(me.group):""}</small></div></div>
-<label class="f">ชื่อ</label><input type="text" id="pn" value="${esc(me.name)}">
-<label class="f">ห้อง</label><input type="text" id="pr" value="${esc(me.room)}">
-<label class="f">กลุ่ม</label>
-<select id="pg">
-  <option value="">ไม่มีกลุ่ม</option>${GROUPS.map(g=>`<option ${me.group===g?"selected":""}>${g}</option>`).join("")}
-</select>
-<label class="f">ทักษะ</label>${chips(me.skills)}
-<button class="btn" data-act="saveProfile">บันทึก</button>
-</div>`;
-  }
-  
-  else if(view==="avail"){
-    refreshUser();
-    const first=new Date(calY,calM,1),off=(first.getDay()+6)%7,daysInMonth=new Date(calY,calM+1,0).getDate();
-    let cells=[];for(let i=0;i<off;i++)cells.push(<span style="visibility:hidden"></span>);
-    for(let d=1;d<=daysInMonth;d++){
-      const ds=`${calY}-${pad(calM+1)}-${pad(d)}`,isPast=ds<todayStr(),sel=me.workdates.includes(ds);
-      cells.push(<button class="day ${isPast?'past':''}" data-date="${ds}" aria-pressed="${sel}">${d}</button>);
-    }
-    html=`
-<div class="card"><h2>เลือกวันทำงาน</h2>
-<p style="color:var(--muted);font-size:.9rem">เลือกอย่างน้อย 5 วัน</p>
-<div class="calhead"><button data-cal="-1">‹</button><b>${MTH[calM]} ${calY+543}</b><button data-cal="1">›</button></div>
-<div class="grid7">${WD.map(w=>`<div class="wd">${w}</div>`).join("")}${cells.join("")}</div>
-<p style="margin-top:10px">เลือกแล้ว <b>${me.workdates.length}</b> วัน ${me.workdates.length>=5?"✅ ครบแล้ว":"⚠️ ยังไม่ครบ"}</p>
-${me.workdates.length?`<p style="font-size:.9rem;color:var(--muted)">วันที่เลือก: ${me.workdates.sort().map(d=>d.slice(5)).join(", ")}</p>`:""}
-<button class="btn" data-act="saveDays">บันทึกวันทำงาน</button>
-</div>`;
-  }
-  
-  // ✅ หน้าดูวันที่ทุกคน — แอดมิน+หัวหน้าเห็น
-  else if(view==="viewdates"){
-    html=`
-<div class="card">
-  <h2>📅 วันที่เลือกทำงาน</h2>
-  <p style="color:var(--muted);font-size:.9rem">
-    ${me.role==="admin"?"เห็นทุกคน":"เห็นสมาชิกในทีม "+esc(me.group)+" เท่านั้น"}
-  </p>
-  ${listWithDates()}
-</div>`;
-  }
-  
-  else if(view==="leaves"){
-    let list=[];db.users.forEach(u=>{
-      if(me.role==="leader"&&u.group!==me.group&&u.id!==me.id) return;
-      u.leaves.forEach(l=>list.push({u,l}));
-    });
-    list.sort((a,b)=>(a.l.status==="pending"?0:1)-(b.l.status==="pending"?0:1));
-    html=`<div class="card"><h2>คำขอลา</h2>`;
-    if(!list.length)html+=`<p class="empty">ยังไม่มี</p>`;
-    else list.forEach(x=>{
-      html+=`<div class="member">${av(x.u)}<div class="info"><b>${esc(x.u.name)}</b><small>${esc(x.l.date)} · ${esc(x.l.reason)}</small></div>
-      <div>${statusBadge(x.l.status)}${x.l.status==="pending"?`<br><button class="btn sec sm" data-ok="${x.l.id}">อนุมัติ</button><button class="btn sec sm" data-no="${x.l.id}">ไม่อนุมัติ</button>`:""}</div></div>`;
-    });
-    html+=`</div>`;
-  }
-  
-  else if(view==="checkin"){
-    refreshUser();
-    const today=me.attendance.find(a=>a.date===todayStr());
-    html=`<div class="card"><h2>เช็คชื่อวันนี้</h2>`;
-    if(today){
-      html+=`<div style="padding:12px;border-radius:10px;background:${today.late>0?'#FBE5E3':'#E4F3E9'}">✅ เช็คชื่อแล้วเวลา ${today.time}${today.late>0?`<br>มาสาย ${today.late} นาที · หัก ${today.fine} บาท`:`<br>ตรงเวลา`}</div>`;
-    }else{
-      html+=`<label class="f">ถ่ายรูป: ${esc(db.settings.photoTask)}</label><input type="file" id="ciFile" accept="image/*"><div class="err" id="ciErr"></div><button class="btn" data-act="doCheckin">เช็คชื่อ</button>`;
-    }
-    html+=`</div>`;
-  }
-  
-  else if(view==="members"&&me.role==="admin"){
-    html=`<div class="card"><h2>สมาชิกทั้งหมด (${db.users.length} คน)</h2>${listWithDates()}</div>`;
-  }
-  
-  else if(view==="settings"&&me.role==="admin"){
-    html=`
-<div class="card"><h2>ตั้งค่า</h2>
-<label class="f">โจทย์รูปวันนี้</label><input type="text" id="stTask" value="${esc(db.settings.photoTask)}">
-<label class="f">เวลาเริ่มงาน</label><input type="time" id="stTime" value="${esc(db.settings.startTime)}">
-<label class="f">ค่าปรับ/นาที</label><input type="number" id="stFine" value="${db.settings.finePerMin}">
-<button class="btn w" data-act="saveSettings">บันทึก</button>
-</div>`;
-  }
-  
-  $("app").innerHTML=html;
-}
-
-// ========== กดปุ่มทำงาน ==========
-document.addEventListener("click",async e=>{
-  const t=e.target.closest("button");if(!t)return;
-  
-  if(t.dataset.go){ if(t.dataset.go==="out"){signOut();toast("ออกแล้ว")}else view=t.dataset.go;draw();return }
-  if(t.dataset.skill){t.setAttribute("aria-pressed",t.getAttribute("aria-pressed")==="true"?"false":"true");return}
-  if(t.dataset.cal){calM+=+t.dataset.cal;if(calM<0){calM=11;calY--}if(calM>11){calM=0;calY++}draw();return}
-  if(t.dataset.date){refreshUser();const ds=t.dataset.date;const i=me.workdates.indexOf(ds);i>=0?me.workdates.splice(i,1):me.workdates.push(ds);DB.save(db);draw();return}
-  if(t.dataset.ok||t.dataset.no){
-    const id=parseInt(t.dataset.ok||t.dataset.no);
-    for(const u of db.users){const l=u.leaves.find(x=>x.id===id);if(l){l.status=t.dataset.ok?"approved":"rejected";DB.save(db);toast("อัปเดตแล้ว");draw();break;}}
+// ======================================================
+// Sync
+// ======================================================
+async function sync(){
+  if(!token){
+    me=null;
+    view="login";
+    draw();
     return;
   }
-  
+  try{
+    const response=await fetch(
+      GAS_URL+
+      "?action=sync&token="+
+      encodeURIComponent(token)
+    );
+    const result=await response.json();
+    if(!result.success){
+      throw new Error(result.error||"โหลดข้อมูลไม่ได้");
+    }
+    state=result.state||state;
+    me=state.users.find(
+      u=>u.sid===state.meId
+    )||null;
+    if(!me){
+      token=null;
+      localStorage.removeItem(TOKEN_KEY);
+      view="login";
+      draw();
+      return;
+    }
+    if(view==="loading"){
+      view="avail";
+    }
+    draw();
+  }catch(err){
+    console.error(err);
+    if(view==="loading"){
+      view="login";
+      draw();
+    }
+    toast("เชื่อมต่อข้อมูลไม่ได้");
+  }
+}
+// ======================================================
+// Login
+// ======================================================
+async function signIn(sid,pin){
+  try{
+    const result=await api("login",{
+      sid:sid,
+      pin:pin
+    });
+    token=result.token;
+    localStorage.setItem(
+      TOKEN_KEY,
+      token
+    );
+    me=result.user;
+    view="avail";
+    await sync();
+    toast("ยินดีต้อนรับ "+me.name);
+  }catch(err){
+    $("err").textContent=err.message;
+  }
+}
+// ======================================================
+// Logout
+// ======================================================
+async function signOut(){
+  try{
+    if(token){
+      await api("logout",{});
+    }
+  }catch(e){}
+  token=null;
+  me=null;
+  localStorage.removeItem(TOKEN_KEY);
+  view="login";
+  draw();
+  toast("ออกจากระบบแล้ว");
+}
+// ======================================================
+// รูป
+// ======================================================
+async function readImage(file){
+  if(!file) return "";
+  return new Promise(resolve=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const img=new Image();
+      img.onload=()=>{
+        const canvas=document.createElement("canvas");
+        const max=600;
+        const scale=
+          Math.min(
+            1,
+            max/Math.max(
+              img.width,
+              img.height
+            )
+          );
+        canvas.width=
+          Math.round(img.width*scale);
+        canvas.height=
+          Math.round(img.height*scale);
+        const ctx=canvas.getContext("2d");
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+        resolve(
+          canvas.toDataURL(
+            "image/jpeg",
+            .55
+          )
+        );
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+// ======================================================
+// Navigation
+// ======================================================
+function drawNav(){
+  if(!me){
+    $("nav").innerHTML="";
+    return;
+  }
+  function btn(v,label){
+    return `
+      <button
+        data-go="${v}"
+        class="${view===v?"on":""}"
+      >
+        ${label}
+      </button>
+    `;
+  }
+  let html="";
+  html+=btn("profile","โปรไฟล์");
+  html+=btn("avail","วันทำงาน");
+  html+=btn("checkin","เช็คชื่อ");
+  if(me.role!=="member"){
+    html+=btn("leaves","อนุมัติลา");
+  }
+  if(
+    me.role==="admin"||
+    me.role==="leader"
+  ){
+    html+=btn("viewdates","ดูวันที่ทุกคน");
+  }
+  if(me.role==="admin"){
+    html+=btn("members","สมาชิก");
+    html+=btn("settings","ตั้งค่า");
+  }
+  html+=`
+    <button
+      data-go="out"
+      class="btn sec sm"
+    >
+      ออก
+    </button>
+  `;
+  $("nav").innerHTML=html;
+}
+// ======================================================
+// รายชื่อ
+// ======================================================
+function listUsers(){
+  let list=[...state.users];
+  if(me.role==="leader"){
+    list=list.filter(
+      u=>
+        u.group===me.group||
+        u.sid===me.sid
+    );
+  }
+  return list;
+}
+function listWithDates(){
+  const list=listUsers();
+  if(!list.length){
+    return <p class="empty">ยังไม่มีสมาชิก</p>;
+  }
+  return list.map(u=>{
+    const days=[...(u.workdates||[])].sort();
+    const ok=days.length>=5;
+    const shortDates=
+      days
+        .map(d=>d.slice(5).replace("-","/"))
+        .join(", ");
+    return `
+      <div class="member">
+        ${av(u)}
+        <div class="info">
+          <b>${esc(u.name)}</b>
+          ${
+            u.role!=="member"
+            ?`<span class="role">
+                ${esc(ROLE_TH[u.role]||u.role)}
+              </span>`
+            :""
+          }
+          <small>
+            ${esc(u.sid)}
+            ·
+            ${esc(u.group||"ยังไม่มีกลุ่ม")}
+          </small>
+          <small>
+            เลือกแล้ว
+            <b style="color:${ok?"var(--ok)":"var(--bad)"}">
+              ${days.length}
+            </b>
+            วัน
+            ${ok?"✅ ครบ":"⚠️ ยังไม่ครบ"}
+          </small>
+          ${
+            days.length
+            ?`
+              <small class="dates-tag">
+                ${esc(shortDates)}
+              </small>
+            `
+            :`
+              <small class="dates-tag">
+                ยังไม่ได้เลือกวัน
+              </small>
+            `
+          }
+        </div>
+        ${
+          me.role==="admin"
+          ?`
+            <select data-uid="${esc(u.id)}">
+              <option value="">
+                ไม่มีกลุ่ม
+              </option>
+              ${GROUPS.map(g=>`
+                <option
+                  value="${esc(g)}"
+                  ${u.group===g?"selected":""}
+                >
+                  ${esc(g)}
+                </option>
+              `).join("")}
+            </select>
+          `
+          :""
+        }
+      </div>
+    `;
+  }).join("");
+}
+// ======================================================
+// วาดหน้า
+// ======================================================
+function draw(){
+  drawNav();
+  let html="";
+  // ----------------------------------------------------
+  // Login
+  // ----------------------------------------------------
+  if(view==="loading"){
+    html=`
+      <div class="card">
+        <div class="empty">
+          กำลังโหลดข้อมูล...
+        </div>
+      </div>
+    `;
+  }
+  else if(view==="login"){
+    html=`
+      <div class="card">
+        <h2>เข้าสู่ระบบ</h2>
+        <label class="f">
+          รหัสนักเรียน
+        </label>
+        <input
+          type="text"
+          id="sid"
+          inputmode="numeric"
+        >
+        <label class="f">
+          PIN 6 หลัก
+        </label>
+        <input
+          type="password"
+          id="pin"
+          maxlength="6"
+          inputmode="numeric"
+        >
+        <div
+          class="err"
+          id="err"
+        ></div>
+        <button
+          class="btn w"
+          data-act="login"
+        >
+          เข้าสู่ระบบ
+        </button>
+        <button
+          class="btn sec w"
+          data-go="register"
+        >
+          ลงทะเบียนใหม่
+        </button>
+        <div class="hint">
+          🟡 Yellow Team Parade
+          <br>
+          ระบบจัดการสมาชิก วันทำงาน เช็คชื่อ และการลา
+        </div>
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // Register
+  // ----------------------------------------------------
+  else if(view==="register"){
+    html=`
+      <div class="card">
+        <h2>ลงทะเบียน</h2>
+        <label class="f">
+          รหัสนักเรียน
+        </label>
+        <input
+          type="text"
+          id="rs"
+          inputmode="numeric"
+        >
+        <label class="f">
+          ชื่อ-นามสกุล
+        </label>
+        <input
+          type="text"
+          id="rn"
+        >
+        <label class="f">
+          ห้องเรียน
+        </label>
+        <input
+          type="text"
+          id="rr"
+        >
+        <label class="f">
+          PIN 6 หลัก
+        </label>
+        <input
+          type="password"
+          id="rp"
+          maxlength="6"
+          inputmode="numeric"
+        >
+        <label class="f">
+          กลุ่ม
+        </label>
+        <select id="rg">
+          <option value="">
+            ยังไม่สังกัด
+          </option>
+          ${GROUPS.map(g=>`
+            <option value="${esc(g)}">
+              ${esc(g)}
+            </option>
+          `).join("")}
+        </select>
+        <label class="f">
+          ทักษะ
+        </label>
+        ${chips()}
+        <div
+          class="err"
+          id="err"
+        ></div>
+        <button
+          class="btn w"
+          data-act="register"
+        >
+          ลงทะเบียน
+        </button>
+        <button
+          class="btn sec w"
+          data-go="login"
+        >
+          กลับ
+        </button>
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // Profile
+  // ----------------------------------------------------
+  else if(view==="profile"){
+    html=`
+      <div class="card">
+        <h2>โปรไฟล์</h2>
+        <div class="row">
+          ${av(me)}
+          <div>
+            <b>${esc(me.name)}</b>
+            <small>
+              ${esc(me.sid)}
+              ·
+              ${esc(ROLE_TH[me.role]||me.role)}
+              ${
+                me.group
+                ?" · "+esc(me.group)
+                :""
+              }
+            </small>
+          </div>
+        </div>
+        <label class="f">
+          ชื่อ
+        </label>
+        <input
+          type="text"
+          id="pn"
+          value="${esc(me.name)}"
+        >
+        <label class="f">
+          ห้อง
+        </label>
+        <input
+          type="text"
+          id="pr"
+          value="${esc(me.room)}"
+        >
+        <label class="f">
+          กลุ่ม
+        </label>
+        <select id="pg">
+          <option value="">
+            ไม่มีกลุ่ม
+          </option>
+          ${GROUPS.map(g=>`
+            <option
+              value="${esc(g)}"
+              ${me.group===g?"selected":""}
+            >
+              ${esc(g)}
+            </option>
+          `).join("")}
+        </select>
+        <label class="f">
+          ทักษะ
+        </label>
+        ${chips(me.skills||[])}
+        <label class="f">
+          รูปโปรไฟล์
+        </label>
+        <input
+          type="file"
+          id="profilePhoto"
+          accept="image/*"
+        >
+        <button
+          class="btn"
+          data-act="saveProfile"
+        >
+          บันทึก
+        </button>
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // วันทำงาน
+  // ----------------------------------------------------
+  else if(view==="avail"){
+    const first=
+      new Date(calY,calM,1);
+    const offset=
+      (first.getDay()+6)%7;
+    const daysInMonth=
+      new Date(
+        calY,
+        calM+1,
+        0
+      ).getDate();
+    let cells=[];
+    for(let i=0;i<offset;i++){
+      cells.push(`
+        <span
+          style="visibility:hidden"
+        ></span>
+      `);
+    }
+    for(let d=1;d<=daysInMonth;d++){
+      const ds=
+        ${calY}-${pad(calM+1)}-${pad(d)};
+      const isPast=
+        ds<todayStr();
+      const selected=
+        (me.workdates||[]).includes(ds);
+      cells.push(`
+        <button
+          class="day ${isPast?"past":""}"
+          data-date="${ds}"
+          aria-pressed="${selected}"
+        >
+          ${d}
+        </button>
+      `);
+    }
+    html=`
+      <div class="card">
+        <h2>เลือกวันทำงาน</h2>
+        <p style="color:var(--muted);font-size:.9rem">
+          เลือกอย่างน้อย 5 วัน
+        </p>
+        <div class="calhead">
+          <button data-cal="-1">
+            ‹
+          </button>
+          <b>
+            ${MTH[calM]}
+            ${calY+543}
+          </b>
+          <button data-cal="1">
+            ›
+          </button>
+        </div>
+        <div class="grid7">
+          ${WD.map(w=>`
+            <div class="wd">
+              ${w}
+            </div>
+          `).join("")}
+          ${cells.join("")}
+        </div>
+        <p style="margin-top:10px">
+          เลือกแล้ว
+          <b>
+            ${(me.workdates||[]).length}
+          </b>
+          วัน
+          ${
+            (me.workdates||[]).length>=5
+            ?"✅ ครบแล้ว"
+            :"⚠️ ยังไม่ครบ"
+          }
+        </p>
+        ${
+          (me.workdates||[]).length
+          ?`
+            <p style="font-size:.9rem;color:var(--muted)">
+              วันที่เลือก:
+              ${me.workdates.sort().map(d=>esc(d.slice(5))).join(", ")}
+            </p>
+          `
+          :""
+        }
+        <button
+          class="btn"
+          data-act="saveDays"
+        >
+          บันทึกวันทำงาน
+        </button>
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // ดูวันที่ทุกคน
+  // ----------------------------------------------------
+  else if(view==="viewdates"){
+    html=`
+      <div class="card">
+        <h2>
+          📅 วันที่เลือกทำงาน
+        </h2>
+        <p style="color:var(--muted);font-size:.9rem">
+          ${
+            me.role==="admin"
+            ?"เห็นทุกคน"
+            :"เห็นสมาชิกในทีม "+esc(me.group)
+          }
+        </p>
+        ${listWithDates()}
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // ลา
+  // ----------------------------------------------------
+  else if(view==="leaves"){
+    let list=[];
+    state.users.forEach(u=>{
+      if(
+        me.role==="leader" &&
+        u.group!==me.group &&
+        u.sid!==me.sid
+      ){
+        return;
+      }
+      (u.leaves||[]).forEach(l=>{
+        list.push({u:u,l:l});
+      });
+    });
+    list.sort(
+      (a,b)=>
+        (a.l.status==="pending"?0:1)-
+        (b.l.status==="pending"?0:1)
+    );
+    html=`
+      <div class="card">
+        <h2>
+          คำขอลา
+        </h2>
+    `;
+    if(!list.length){
+      html+=`
+        <p class="empty">
+          ยังไม่มีคำขอลา
+        </p>
+      `;
+    }else{
+      list.forEach(x=>{
+        html+=`
+          <div class="member">
+            ${av(x.u)}
+            <div class="info">
+              <b>
+                ${esc(x.u.name)}
+              </b>
+              <small>
+                ${esc(x.l.date)}
+                ·
+                ${esc(x.l.reason)}
+              </small>
+              ${
+                x.l.decidedBy
+                ?`
+                  <small>
+                    ผู้อนุมัติ:
+                    ${esc(x.l.decidedBy)}
+                  </small>
+                `
+                :""
+              }
+            </div>
+            <div>
+              ${statusBadge(x.l.status)}
+              ${
+                x.l.status==="pending"
+                ?`
+                  <br>
+                  <button
+                    class="btn sec sm"
+                    data-ok="${esc(x.l.id)}"
+                  >
+                    อนุมัติ
+                  </button>
+                  <button
+                    class="btn sec sm"
+                    data-no="${esc(x.l.id)}"
+                  >
+                    ไม่อนุมัติ
+                  </button>
+                `
+                :""
+              }
+            </div>
+          </div>
+        `;
+      });
+    }
+    html+=`</div>`;
+  }
+  // ----------------------------------------------------
+  // เช็คชื่อ
+  // ----------------------------------------------------
+  else if(view==="checkin"){
+    const todayAttendance=
+      (me.attendance||[])
+        .find(a=>a.date===todayStr());
+    html=`
+      <div class="card">
+        <h2>
+          เช็คชื่อวันนี้
+        </h2>
+    `;
+    if(todayAttendance){
+      html+=`
+        <div class="stat">
+          ✅ เช็คชื่อแล้ว
+          <br>
+          เวลา
+          <b>
+            ${esc(todayAttendance.time)}
+          </b>
+          ${
+            Number(todayAttendance.late)>0
+            ?`
+              <br>
+              มาสาย
+              ${todayAttendance.late}
+              นาที
+              ·
+              หัก
+              ${todayAttendance.fine}
+              บาท
+            `
+            :`
+              <br>
+              ตรงเวลา
+            `
+          }
+        </div>
+      `;
+    }else{
+      html+=`
+        <label class="f">
+          ภารกิจรูป:
+          ${esc(
+            state.settings.photoTask||
+            "ถ่ายรูปคู่ป้ายทีม"
+          )}
+        </label>
+        <input
+          type="file"
+          id="ciFile"
+          accept="image/*"
+        >
+        <div
+          class="err"
+          id="ciErr"
+        ></div>
+        <button
+          class="btn"
+          data-act="doCheckin"
+        >
+          เช็คชื่อ
+        </button>
+      `;
+    }
+    html+=`</div>`;
+  }
+  // ----------------------------------------------------
+  // สมาชิก
+  // ----------------------------------------------------
+  else if(
+    view==="members" &&
+    me.role==="admin"
+  ){
+    html=`
+      <div class="card">
+        <h2>
+          สมาชิกทั้งหมด
+          (${state.users.length} คน)
+        </h2>
+        ${listWithDates()}
+      </div>
+    `;
+  }
+  // ----------------------------------------------------
+  // ตั้งค่า
+  // ----------------------------------------------------
+  else if(
+    view==="settings" &&
+    me.role==="admin"
+  ){
+    html=`
+      <div class="card">
+        <h2>
+          ⚙️ ตั้งค่า
+        </h2>
+        <label class="f">
+          โจทย์รูปวันนี้
+        </label>
+        <input
+          type="text"
+          id="stTask"
+          value="${esc(state.settings.photoTask||"")}"
+        >
+        <label class="f">
+          เวลาเริ่มงาน
+        </label>
+        <input
+          type="time"
+          id="stTime"
+          value="${esc(state.settings.startTime||"15:30")}"
+        >
+        <label class="f">
+          ค่าปรับ/นาที
+        </label>
+        <input
+          type="number"
+          id="stFine"
+          min="0"
+          value="${Number(state.settings.finePerMin||0)}"
+        >
+        <button
+          class="btn w"
+          data-act="saveSettings"
+        >
+          บันทึก
+        </button>
+      </div>
+    `;
+  }
+  else{
+    html=`
+      <div class="card">
+        <p class="empty">
+          ไม่พบหน้านี้
+        </p>
+      </div>
+    `;
+  }
+  $("app").innerHTML=html;
+}
+// ======================================================
+// คลิก
+// ======================================================
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("button");
+  if(!t)return;
+  // เปลี่ยนหน้า
+  if(t.dataset.go){
+    if(t.dataset.go==="out"){
+      await signOut();
+      return;
+    }
+    view=t.dataset.go;
+    draw();
+    return;
+  }
+  // เลือกทักษะ
+  if(t.dataset.skill){
+    t.setAttribute(
+      "aria-pressed",
+      t.getAttribute("aria-pressed")==="true"
+      ?"false"
+      :"true"
+    );
+    return;
+  }
+  // เปลี่ยนเดือน
+  if(t.dataset.cal){
+    calM+=Number(t.dataset.cal);
+    if(calM<0){
+      calM=11;
+      calY--;
+    }
+    if(calM>11){
+      calM=0;
+      calY++;
+    }
+    draw();
+    return;
+  }
+  // เลือกวัน
+  if(t.dataset.date){
+    if(!me)return;
+    const ds=t.dataset.date;
+    const arr=me.workdates||[];
+    const index=arr.indexOf(ds);
+    if(index>=0){
+      arr.splice(index,1);
+    }else{
+      arr.push(ds);
+    }
+    me.workdates=arr;
+    draw();
+    return;
+  }
+  // อนุมัติลา
+  if(t.dataset.ok || t.dataset.no){
+    const id=t.dataset.ok||t.dataset.no;
+    try{
+      await api(
+        "decideLeave",
+        {
+          id:id,
+          status:t.dataset.ok
+            ?"approved"
+            :"rejected"
+        }
+      );
+      toast("อัปเดตคำขอลาแล้ว");
+      await sync();
+    }catch(err){
+      toast(err.message);
+    }
+    return;
+  }
   const act=t.dataset.act;
-  if(act==="login"){const r=signIn($("sid").value.trim(),$("pin").value);if(r.ok){toast("ยินดีต้อนรับ "+me.name);draw()}else $("err").textContent=r.err;}
-  if(act==="reg"){
-    const skills=[].map.call(document.querySelectorAll('[data-skill][aria-pressed="true"]'),x=>x.dataset.skill);
-    const photo=await readImage($("ph")?.files[0]);
-    const r=register({sid:$("rs").value.trim(),name:$("rn").value.trim(),room:$("rr").value.trim(),pin:$("rp").value,group:$("rg").value,skills,photo});
-    if(r.ok){signIn($("rs").value.trim(),$("rp").value);toast("สำเร็จ!");draw()}else $("err").textContent=r.err;
+  // Login
+  if(act==="login"){
+    const sid=
+      $("sid").value.trim();
+    const pin=
+      $("pin").value.trim();
+    if(!sid || !pin){
+      $("err").textContent=
+        "กรุณากรอกข้อมูลให้ครบ";
+      return;
+    }
+    await signIn(sid,pin);
+    return;
   }
+  // Register
+  if(act==="register"){
+    const skills=
+      Array.from(
+        document.querySelectorAll(
+          '[data-skill][aria-pressed="true"]'
+        )
+      ).map(x=>x.dataset.skill);
+    try{
+      const result=await api(
+        "register",
+        {
+          sid:$("rs").value.trim(),
+          name:$("rn").value.trim(),
+          room:$("rr").value.trim(),
+          pin:$("rp").value.trim(),
+          group:$("rg").value,
+          skills:skills
+        }
+      );
+      toast(
+        result.message||
+        "ลงทะเบียนสำเร็จ"
+      );
+      view="login";
+      draw();
+    }catch(err){
+      $("err").textContent=
+        err.message;
+    }
+    return;
+  }
+  // Profile
   if(act==="saveProfile"){
-    refreshUser();const skills=[].map.call(document.querySelectorAll('[data-skill][aria-pressed="true"]'),x=>x.dataset.skill);
-    me.name=$("pn").value.trim();me.room=$("pr").value.trim();me.group=$("pg").value;me.skills=skills;
-    DB.save(db);toast("บันทึกแล้ว");draw();
+    try{
+      const skills=
+        Array.from(
+          document.querySelectorAll(
+            '[data-skill][aria-pressed="true"]'
+          )
+        ).map(x=>x.dataset.skill);
+      let photo="";
+      const file=
+        $("profilePhoto")?.files?.[0];
+      if(file){
+        photo=await readImage(file);
+      }
+      await api(
+        "profile",
+        {
+          name:$("pn").value.trim(),
+          room:$("pr").value.trim(),
+          group:$("pg").value,
+          skills:skills,
+          photo:photo
+        }
+      );
+      toast("บันทึกโปรไฟล์แล้ว");
+      await sync();
+    }catch(err){
+      toast(err.message);
+    }
+    return;
   }
-  if(act==="saveDays"){refreshUser();if(me.workdates.length<5){toast("ต้องเลือกอย่างน้อย 5 วัน");return}DB.save(db);toast(บันทึกแล้ว ${me.workdates.length} วัน);}
+  // วันทำงาน
+  if(act==="saveDays"){
+    if((me.workdates||[]).length<5){
+      toast(
+        "ต้องเลือกอย่างน้อย 5 วัน"
+      );
+      return;
+    }
+    try{
+      await api(
+        "workdates",
+        {
+          workdates:me.workdates
+        }
+      );
+      toast(
+        "บันทึกแล้ว "+
+        me.workdates.length+
+        " วัน"
+      );
+      await sync();
+    }catch(err){
+      toast(err.message);
+    }
+    return;
+  }
+  // เช็คชื่อ
   if(act==="doCheckin"){
-    refreshUser();const f=$("ciFile")?.files[0];if(!f){toast("แนบรูปก่อน");return}
-    const photo=await readImage(f);const now=new Date();const timeStr=pad(now.getHours())+":"+pad(now.getMinutes());
-    const [h,m]=db.settings.startTime.split(":").map(Number);const late=Math.max(0,(now.getHours()*60+now.getMinutes())-(h*60+m));
-    me.attendance.push({date:todayStr(),time:timeStr,late,fine:late*db.settings.finePerMin,photo});
-    DB.save(db);toast(late>0?`สาย ${late} นาที · หัก ${late*db.settings.finePerMin} บาท`:"ตรงเวลา!");draw();
+    const file=
+      $("ciFile")?.files?.[0];
+    if(!file){
+      $("ciErr").textContent=
+        "กรุณาแนบรูปก่อน";
+      return;
+    }
+    try{
+      const photo=
+        await readImage(file);
+      const result=
+        await api(
+          "checkin",
+          {
+            photo:photo
+          }
+        );
+      toast(
+        result.late>0
+        ?`สาย ${result.late} นาที · หัก ${result.fine} บาท`
+        :"เช็คชื่อสำเร็จ! ตรงเวลา 🎉"
+      );
+      await sync();
+    }catch(err){
+      toast(err.message);
+    }
+    return;
   }
+  // ตั้งค่า
   if(act==="saveSettings"){
-    db.settings.photoTask=$("stTask").value.trim();db.settings.startTime=$("stTime").value;db.settings.finePerMin=+$("stFine").value||0;
-    DB.save(db);toast("บันทึกแล้ว");draw();
+    try{
+      await api(
+        "settings",
+        {
+          photoTask:$("stTask").value.trim(),
+          startTime:$("stTime").value,
+          finePerMin:
+            Number($("stFine").value)||0
+        }
+      );
+      toast("บันทึกการตั้งค่าแล้ว");
+      await sync();
+    }catch(err){
+      toast(err.message);
+    }
+    return;
   }
 });
-
-document.addEventListener("change",e=>{
-  if(e.target.tagName==="SELECT"&&e.target.dataset.uid){
-    const u=db.users.find(x=>x.id===e.target.dataset.uid);if(u){u.group=e.target.value;DB.save(db);toast("ย้ายกลุ่มแล้ว");}
+// ======================================================
+// เปลี่ยนกลุ่ม
+// ======================================================
+document.addEventListener("change",async e=>{
+  if(
+    e.target.tagName==="SELECT" &&
+    e.target.dataset.uid
+  ){
+    const user=
+      state.users.find(
+        u=>u.id===e.target.dataset.uid
+      );
+    if(!user)return;
+    try{
+      // ใช้ profile ของสมาชิกคนนั้นไม่ได้
+      // ถ้าจะให้ admin ย้ายกลุ่มจริง
+      // จะเพิ่ม API สำหรับ admin ในขั้นถัดไป
+      toast(
+        "ระบบบันทึกกลุ่มสมาชิกจากหน้าโปรไฟล์"
+      );
+    }catch(err){
+      toast(err.message);
+    }
   }
 });
-
+// ======================================================
+// เริ่มระบบ
+// ======================================================
 draw();
-if(token){me=DB.findUser(token.replace("t_",""));if(me)view="avail";draw();}
+if(token){
+  view="loading";
+  draw();
+  sync();
+}
+// ======================================================
+// Sync อัตโนมัติทุก 10 วินาที
+// ======================================================
+setInterval(()=>{
+  if(token){
+    sync();
+  }
+},10000);
 </script>
 </body>
 </html>
