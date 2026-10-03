@@ -1935,44 +1935,29 @@ document.addEventListener(
 // ======================================================
 // เริ่มระบบ
 // ======================================================
+
+// เปิดเว็บมาให้เห็นหน้า Login ทันที
+view = "login";
 draw();
-if(token){
-  /*
-    เปิดหน้าเว็บก่อน
-    ไม่รอ Google Sheets
-  */
-  view="loading";
-  draw();
-  /*
-    ถ้า GAS ช้าเกิน 8 วินาที
-    ให้กลับหน้า Login
-    ไม่ปล่อยให้ค้างตลอด
-  */
-  const syncTimeout=
-    setTimeout(()=>{
-      if(view==="loading"){
-        view="login";
-        draw();
-        toast(
-          "ระบบใช้เวลาเชื่อมต่อนาน กรุณาเข้าสู่ระบบอีกครั้ง"
-        );
-      }
-    },8000);
-  sync()
-    .finally(()=>{
-      clearTimeout(
-        syncTimeout
-      );
-    });
+
+// ถ้ามี token เก่า ค่อยเชื่อมต่อ Google Sheets เบื้องหลัง
+if (token) {
+  sync().catch(err => {
+    console.error("AUTO SYNC ERROR:", err);
+    token = null;
+    me = null;
+    localStorage.removeItem(TOKEN_KEY);
+    view = "login";
+    draw();
+  });
 }
-// ======================================================
+
 // Sync อัตโนมัติทุก 10 วินาที
-// ======================================================
-setInterval(()=>{
-  if(token){
+setInterval(() => {
+  if (token && me) {
     sync();
   }
-},10000);
+}, 10000);
 </script>
 </body>
 </html>
